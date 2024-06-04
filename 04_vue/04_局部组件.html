@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部组件</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    <hello></hello>
+    <count count="你好"></count>
+    <user-list :users="userList"></user-list>
+</div>
+<script>
+    // 定义一个局部组件
+    var hello = {
+        template: `<div>这是一个局部组件</div>`
+    }
+
+    // 定义一个接收参数的局部组件
+    var count = {
+        props: ['count'],
+        template: `
+          <div>{{ count }}</div>`
+    }
+
+    //定义一个接收动态参数的局部组件
+    var userList = {
+        props: ['users'],
+        template: `
+          <div>
+            <ul>
+                <li v-for="(item,index) in users">{{ index }} - {{ item.id }} - {{ item.name }}</li>
+            </ul>
+          </div>
+        `
+    }
+
+    const app = Vue.createApp({
+        data() {
+            return {
+                message: "你好",
+                userList: [
+                    {id: 1, name: "张三"},
+                    {id: 2, name: "李四"},
+                    {id: 3, name: "王五"},
+                    {id: 4, name: "陈启"}
+                ]
+            }
+        },
+        //局部组件注册
+        components: {
+            hello: hello,
+            count: count,
+            userList: userList
+        }
+    })
+    app.mount("#app")
+</script>
+</body>
+</html>

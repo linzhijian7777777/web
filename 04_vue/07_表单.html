@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+</div>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                message: '你好'
+            }
+        }
+    })
+    app.mount("#app")
+</script>
+</body>
+</html>

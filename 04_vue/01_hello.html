@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <br />
+        <button @click="add">+1</button>
+        <span style="margin-left: 10px;margin-right: 10px;">{{ count }}</span>
+        <button @click="sub">-1</button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: "你好世界",
+                    count: 0
+                }
+            },
+            methods: {
+                add() {
+                    this.count++
+                },
+                sub() {
+                    this.count--
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监听属性</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="add">点我啊 {{ count }}</button>
+</div>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                count: 1,
+            }
+        },
+        methods: {
+            add() {
+                this.count++
+            }
+        }
+    })
+    const vm = app.mount("#app")
+    vm.$watch('count', function (nval, oval) {
+        console.log('旧值:', oval, '新值:', nval)
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <div>
+        <button @click="countA++">{{ countA }}</button>
+        <button @click="countB++">{{ countB }}</button>
+    </div>
+    <div>结果：{{ resultA }} - {{ resultB }}</div>
+</div>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                countA: 0,
+                countB: 1
+            }
+        },
+        methods: {
+        },
+        computed: {
+            resultA: function () {
+                console.log("resultA执行了...")
+                return this.countA
+            },
+            resultB: function () {
+                console.log("resultB执行了...")
+                return this.countB
+            }
+        }
+    })
+    app.mount("#app")
+</script>
+</body>
+
+</html>

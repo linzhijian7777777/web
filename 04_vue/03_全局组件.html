@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局组件</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    <hello></hello>
+    <count></count>
+    <count></count>
+    <count></count>
+</div>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {}
+        }
+    })
+    //注册全局组件
+    app.component('hello', {
+        template: '<h1>这是一个自定义组件-hello</h1>'
+    })
+
+    app.component('count', {
+        data() {
+            return {
+                count: 1
+            }
+        },
+        template: `
+          <button @click="count++">{{ count }}</button>`
+    })
+    app.mount("#app")
+</script>
+</body>
+</html>
